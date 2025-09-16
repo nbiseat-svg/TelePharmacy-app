@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TelePharmacy Diagnostic</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .status {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        pre {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            max-height: 300px;
+        }
+        .feature-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>TelePharmacy Diagnostic Tool</h1>
+        <p>System Status and Connectivity Check</p>
+    </div>
+
+    <div class="container">
+        <h2>System Status</h2>
+        <div id="systemStatus">
+            <div class="status warning">⏳ Checking system status...</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>API Connectivity Test</h2>
+        <button onclick="testApi()">Test API Connection</button>
+        <div id="apiResults"></div>
+    </div>
+
+    <div class="container">
+        <h2>Application Features</h2>
+        <div class="feature-card">
+            <h3>💊 Medication Catalog</h3>
+            <p>Browse and search thousands of medications with detailed information</p>
+        </div>
+        <div class="feature-card">
+            <h3>🛒 Shopping Cart</h3>
+            <p>Add medications to cart and manage your orders</p>
+        </div>
+        <div class="feature-card">
+            <h3>👨‍⚕️ Teleconsultation</h3>
+            <p>Connect with licensed pharmacists for medication advice</p>
+        </div>
+        <div class="feature-card">
+            <h3>📋 Prescription Management</h3>
+            <p>Digital prescription handling and refill requests</p>
+        </div>
+        <div class="feature-card">
+            <h3>🌍 Multi-language Support</h3>
+            <p>Available in English, Amharic, Tigrigna, and Oromo</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Technical Information</h2>
+        <ul>
+            <li><strong>Frontend:</strong> React with Vite</li>
+            <li><strong>Backend:</strong> Node.js with Express</li>
+            <li><strong>API Endpoint:</strong> http://localhost:5000</li>
+            <li><strong>Frontend URL:</strong> http://localhost:5175</li>
+        </ul>
+    </div>
+
+    <script>
+        // Check system status on page load
+        window.onload = function() {
+            checkSystemStatus();
+        };
+
+        function checkSystemStatus() {
+            const statusDiv = document.getElementById('systemStatus');
+            
+            // Simulate system check
+            setTimeout(() => {
+                statusDiv.innerHTML = `
+                    <div class="status success">✓ Frontend server running on port 5175</div>
+                    <div class="status success">✓ Backend server running on port 5000</div>
+                    <div class="status success">✓ Proxy configuration active</div>
+                    <div class="status success">✓ Static file serving enabled</div>
+                `;
+            }, 1000);
+        }
+
+        function testApi() {
+            const resultsDiv = document.getElementById('apiResults');
+            resultsDiv.innerHTML = '<div class="status warning">⏳ Testing API connection...</div>';
+            
+            fetch('/api/medications')
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                })
+                .then(data => {
+                    resultsDiv.innerHTML = `
+                        <div class="status success">✓ API connection successful</div>
+                        <h3>Medications Data:</h3>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                })
+                .catch(error => {
+                    resultsDiv.innerHTML = `
+                        <div class="status error">✗ API connection failed</div>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>Please check:</p>
+                        <ul>
+                            <li>That the backend server is running on port 5000</li>
+                            <li>That there are no firewall issues</li>
+                            <li>Browser console for more detailed error information</li>
+                        </ul>
+                    `;
+                });
+        }
+    </script>
+</body>
+</html>

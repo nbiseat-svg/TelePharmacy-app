@@ -1,0 +1,556 @@
+.pharmacy-finder-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pharmacy-finder-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(74, 85, 104, 0.05);
+  overflow: hidden;
+}
+
+.pharmacy-finder-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.pharmacy-finder-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+
+.pharmacy-finder-header p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.search-section {
+  padding: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.search-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  color: #2d3748;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4a6fc5;
+  box-shadow: 0 0 0 3px rgba(74, 111, 197, 0.2);
+}
+
+.current-location-btn {
+  margin-top: 0.5rem;
+  background: none;
+  border: none;
+  color: #4a6fc5;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.current-location-btn:hover {
+  color: #3a5cb0;
+}
+
+.btn-primary, .btn-secondary {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: block;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #4a6fc5;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #3a5cb0;
+  transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #4a6fc5;
+  border: 2px solid #4a6fc5;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(74, 111, 197, 0.1);
+  transform: translateY(-2px);
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 0 2rem 2rem;
+}
+
+.alert-danger {
+  background-color: #fed7d7;
+  color: #822727;
+  border: 1px solid #feb2b2;
+}
+
+.results-section {
+  padding: 2rem;
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.results-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2d3748;
+}
+
+.results-header p {
+  margin: 0;
+  color: #4a5568;
+}
+
+.pharmacies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.pharmacy-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(74, 85, 104, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pharmacy-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(74, 85, 104, 0.1);
+}
+
+.pharmacy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: #f7fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.pharmacy-header h4 {
+  margin: 0;
+  color: #2d3748;
+}
+
+.availability {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.availability.in-stock {
+  background-color: #c6f6d5;
+  color: #227a43;
+}
+
+.availability.low-stock {
+  background-color: #fefcbf;
+  color: #975a16;
+}
+
+.pharmacy-details {
+  padding: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.detail-value {
+  color: #4a5568;
+}
+
+.detail-value.price {
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.pharmacy-actions {
+  display: flex;
+  gap: 1rem;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.pharmacy-actions .btn-primary,
+.pharmacy-actions .btn-secondary {
+  flex: 1;
+  width: auto;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.map-section {
+  padding: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.map-section h3 {
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  color: #2d3748;
+}
+
+.map-container {
+  height: 400px;
+  position: relative;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ebf8ff 0%, #ceedff 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-placeholder p {
+  font-size: 1.2rem;
+  color: #2d3748;
+  font-weight: 500;
+  z-index: 1;
+}
+
+.map-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-marker {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #4a6fc5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(74, 111, 197, 0.3);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.map-marker:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Ethiopian Map Styles */
+.ethiopia-map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ethiopia-outline {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(74, 111, 197, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 80% 70%, rgba(74, 111, 197, 0.1) 0%, transparent 20%);
+}
+
+/* City markers */
+.map-marker {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.marker-dot {
+  width: 16px;
+  height: 16px;
+  background-color: #ed8936;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(74, 85, 104, 0.3);
+  border: 2px solid white;
+}
+
+.marker-label {
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #2d3748;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2px 6px;
+  border-radius: 10px;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  left: 50%;
+  position: relative;
+}
+
+/* Pharmacy markers */
+.pharmacy-marker {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 20;
+}
+
+.pharmacy-icon {
+  width: 28px;
+  height: 28px;
+  background-color: #48bb78;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(74, 85, 104, 0.3);
+  border: 2px solid white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Marker with pharmacy */
+.map-marker.with-pharmacy .marker-dot {
+  background-color: #48bb78;
+}
+
+/* Route visualization */
+.route-path {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.route-point {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #4299e1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #4299e1;
+}
+
+.route-point:not(:first-child):not(:last-child) {
+  background-color: #4299e1;
+  width: 6px;
+  height: 6px;
+}
+
+/* Start and end markers */
+.start-marker, .end-marker {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-marker {
+  background-color: #48bb78;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(74, 85, 104, 0.3);
+}
+
+.end-marker {
+  background-color: #f56565;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(74, 85, 104, 0.3);
+}
+
+.marker-icon {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Map legend */
+.map-legend {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 10px rgba(74, 85, 104, 0.1);
+  z-index: 30;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.legend-item:last-child {
+  margin-bottom: 0;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.city-marker {
+  background-color: #ed8936;
+  border: 2px solid white;
+}
+
+.pharmacy-marker-legend {
+  background-color: #48bb78;
+  border: 2px solid white;
+}
+
+.route-legend {
+  background-color: #4299e1;
+  border: 2px solid white;
+}
+
+.legend-item span {
+  font-size: 12px;
+  color: #2d3748;
+}
+
+@media (max-width: 768px) {
+  .pharmacy-finder-page {
+    padding: 1rem;
+  }
+  
+  .pharmacy-finder-header {
+    padding: 1.5rem;
+  }
+  
+  .search-section, .results-section, .map-section {
+    padding: 1rem;
+  }
+  
+  .pharmacies-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pharmacy-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .pharmacy-actions {
+    flex-direction: column;
+  }
+  
+  .pharmacy-actions .btn-primary,
+  .pharmacy-actions .btn-secondary {
+    width: 100%;
+  }
+  
+  .map-container {
+    height: 300px;
+  }
+  
+  .map-legend {
+    bottom: 10px;
+    right: 10px;
+    padding: 8px;
+  }
+  
+  .legend-item span {
+    font-size: 10px;
+  }
+}

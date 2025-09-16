@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser Test</title>
+</head>
+<body>
+    <h1>Browser JavaScript Test</h1>
+    <p>This page will help us determine if JavaScript is working in your browser.</p>
+    
+    <div id="results">
+        <p><strong>Test 1 - Basic JavaScript:</strong> <span id="js-test">Not Run</span></p>
+        <p><strong>Test 2 - DOM Manipulation:</strong> <span id="dom-test">Not Run</span></p>
+        <p><strong>Test 3 - Date/Time Functions:</strong> <span id="date-test">Not Run</span></p>
+    </div>
+    
+    <button onclick="runTests()">Run Tests</button>
+    
+    <script>
+        function runTests() {
+            // Test 1: Basic JavaScript
+            document.getElementById("js-test").innerHTML = "PASSED";
+            document.getElementById("js-test").style.color = "green";
+            
+            // Test 2: DOM Manipulation
+            var domTest = document.createElement("span");
+            domTest.innerHTML = "PASSED";
+            domTest.style.color = "green";
+            document.getElementById("dom-test").innerHTML = "";
+            document.getElementById("dom-test").appendChild(domTest);
+            
+            // Test 3: Date/Time Functions
+            var now = new Date();
+            var timeString = now.toLocaleTimeString();
+            var dateTest = document.createElement("span");
+            dateTest.innerHTML = "PASSED (Current time: " + timeString + ")";
+            dateTest.style.color = "green";
+            document.getElementById("date-test").innerHTML = "";
+            document.getElementById("date-test").appendChild(dateTest);
+        }
+        
+        // Run tests automatically when page loads
+        window.onload = function() {
+            runTests();
+        };
+    </script>
+</body>
+</html>

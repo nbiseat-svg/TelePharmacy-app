@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Test</title>
+</head>
+<body>
+    <h1>JavaScript Test</h1>
+    <p id="js-status">If you can see this text in black, JavaScript is not working.</p>
+    <p id="dimensions">Window dimensions will appear here if JavaScript is working.</p>
+
+    <script>
+        // Change the text color to green to indicate JavaScript is working
+        document.getElementById('js-status').style.color = 'green';
+        document.getElementById('js-status').innerHTML = 'If you can see this text in green, JavaScript is working!';
+        
+        // Display window dimensions
+        document.getElementById('dimensions').innerHTML = 'Window size: ' + window.innerWidth + ' x ' + window.innerHeight;
+    </script>
+</body>
+</html>

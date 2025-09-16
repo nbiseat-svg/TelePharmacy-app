@@ -1,0 +1,34 @@
+/* Minimal CSS for basic functionality */
+.App {
+  text-align: center;
+}
+
+.app-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.app-main {
+  padding: 20px;
+  min-height: calc(100vh - 120px);
+}
+
+.app-footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}

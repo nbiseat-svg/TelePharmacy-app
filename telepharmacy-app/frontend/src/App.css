@@ -1,0 +1,375 @@
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Skip to main content link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #667eea;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Simplified header */
+.app-header {
+  background: #ffffff;
+  padding: 15px 20px;
+  color: #4a5568;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(74, 85, 104, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 30px;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #4a5568;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.main-nav a:hover {
+  background: #edf2f7;
+  color: #2d3748;
+}
+
+.main-nav a:focus {
+  background: #edf2f7;
+  color: #2d3748;
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.language-toggle {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #4a5568;
+}
+
+.auth-links a, .user-button {
+  text-decoration: none;
+  color: #2d3748;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 6px;
+  background: #edf2f7;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-links a:hover, .user-button:hover {
+  background: #e2e8f0;
+}
+
+.auth-links a:focus, .user-button:focus {
+  background: #e2e8f0;
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Simplified main content */
+.app-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  min-height: calc(100vh - 160px);
+}
+
+/* Simplified footer */
+.app-footer {
+  background: #f7fafc;
+  padding: 30px 20px;
+  border-top: 1px solid #e2e8f0;
+  color: #4a5568;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.footer-section h3, .footer-section h4 {
+  margin-top: 0;
+  color: #2d3748;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: #4a5568;
+  transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+  color: #2d3748;
+}
+
+.footer-section a:focus {
+  color: #2d3748;
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 30px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+  color: #718096;
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 1200px) {
+  .header-container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+  
+  .app-main {
+    max-width: 100%;
+    padding: 20px 15px;
+  }
+  
+  .footer-container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-nav ul {
+    gap: 15px;
+  }
+  
+  .header-right {
+    gap: 10px;
+  }
+  
+  .language-toggle {
+    padding: 5px 8px;
+    font-size: 0.9rem;
+  }
+  
+  .auth-links a, .user-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 12px 15px;
+  }
+  
+  .header-container {
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .main-nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(74, 85, 104, 0.05);
+    padding: 15px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 99;
+  }
+  
+  .main-nav.open {
+    transform: translateX(0);
+  }
+  
+  .main-nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #4a5568;
+  }
+  
+  .app-main {
+    padding: 20px 10px;
+    min-height: calc(100vh - 140px);
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .footer-bottom {
+    padding-top: 15px;
+    margin: 20px auto 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .app-header {
+    padding: 10px;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+  }
+  
+  .logo img {
+    height: 25px;
+  }
+  
+  .menu-toggle {
+    font-size: 1.3rem;
+  }
+  
+  .main-nav {
+    top: 60px;
+    padding: 10px;
+  }
+  
+  .app-main {
+    padding: 15px 5px;
+  }
+  
+  .footer-container {
+    gap: 15px;
+    padding: 0 10px;
+  }
+}
+
+/* Ensure proper touch targets for mobile */
+button, a, input, select {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px 12px;
+}
+
+/* Prevent text selection on mobile */
+.app-header, .app-footer {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Optimize for high DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .app-header, .app-footer {
+    border-bottom: 0.5px solid #e2e8f0;
+    border-top: 0.5px solid #e2e8f0;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .app-header {
+    border-bottom: 2px solid #2d3748;
+  }
+  
+  .app-footer {
+    border-top: 2px solid #2d3748;
+  }
+  
+  button, a, input, select {
+    border: 2px solid #2d3748;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

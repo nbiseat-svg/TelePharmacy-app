@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Test</title>
+</head>
+<body>
+    <h1 style="color: blue;">If you can see this, your browser is working!</h1>
+    <p style="color: green;">This is a simple HTML file opened directly in the browser.</p>
+    
+    <div id="diagnostics" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+        <h2>Browser Diagnostics</h2>
+        <p>JavaScript Check: <span id="js-check">JavaScript is not working</span></p>
+        <p>Window Width: <span id="width">-</span></p>
+        <p>Window Height: <span id="height">-</span></p>
+    </div>
+
+    <script>
+        // Update the JavaScript check
+        document.getElementById('js-check').textContent = 'JavaScript is working!';
+        document.getElementById('js-check').style.color = 'green';
+        
+        // Update window dimensions
+        function updateDimensions() {
+            document.getElementById('width').textContent = window.innerWidth;
+            document.getElementById('height').textContent = window.innerHeight;
+        }
+        
+        // Initial update
+        updateDimensions();
+        
+        // Update on resize
+        window.addEventListener('resize', updateDimensions);
+        
+        // Log to console
+        console.log('Page loaded successfully');
+    </script>
+</body>
+</html>

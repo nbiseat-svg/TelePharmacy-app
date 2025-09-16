@@ -1,0 +1,2 @@
+This is a simple text file.
+If you can see this text, your system can open text files.

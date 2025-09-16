@@ -1,0 +1,205 @@
+.directions-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.directions-modal {
+  background: white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(74, 85, 104, 0.3);
+}
+
+.directions-modal-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.directions-modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  opacity: 0.8;
+}
+
+.directions-modal-content {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.route-summary {
+  display: flex;
+  justify-content: space-between;
+  background: #f7fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.summary-item {
+  text-align: center;
+}
+
+.summary-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin-bottom: 0.25rem;
+}
+
+.summary-value {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.route-instructions h3 {
+  margin-top: 0;
+  color: #2d3748;
+  border-bottom: 2px solid #4a6fc5;
+  padding-bottom: 0.5rem;
+}
+
+.instructions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.instruction-step {
+  display: flex;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.instruction-step:last-child {
+  border-bottom: none;
+}
+
+.step-icon {
+  width: 30px;
+  height: 30px;
+  background: #4a6fc5;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-text {
+  font-weight: 500;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.step-distance {
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.route-actions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #4a6fc5;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #3a5cb0;
+  transform: translateY(-2px);
+}
+
+.loading-directions {
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-directions p {
+  font-size: 1.2rem;
+  color: #4a5568;
+}
+
+@media (max-width: 768px) {
+  .directions-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+  
+  .directions-modal-header {
+    padding: 1rem;
+  }
+  
+  .directions-modal-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .directions-modal-content {
+    padding: 1rem;
+  }
+  
+  .route-summary {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .instruction-step {
+    flex-direction: column;
+  }
+  
+  .step-icon {
+    margin-bottom: 0.5rem;
+  }
+}

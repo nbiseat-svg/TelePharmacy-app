@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Check</title>
+</head>
+<body>
+    <h1>JavaScript Functionality Check</h1>
+    <p id="status">JavaScript is not working</p>
+    
+    <script>
+        // This script will change the text if JavaScript is working
+        document.getElementById("status").innerHTML = "JavaScript is working!";
+        document.getElementById("status").style.color = "green";
+        
+        // Add a timestamp to show when the script ran
+        var timestamp = new Date().toLocaleString();
+        var timestampElement = document.createElement("p");
+        timestampElement.innerHTML = "Script executed at: " + timestamp;
+        timestampElement.style.color = "blue";
+        document.body.appendChild(timestampElement);
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "telepharmacy-app",
+  "version": "1.0.0",
+  "description": "A telepharmacy application for remote pharmaceutical services",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "client": "npm start --prefix client",
+    "dev:client": "npm run dev --prefix client"
+  },
+  "keywords": ["telepharmacy", "pharmacy", "healthcare", "telemedicine"],
+  "author": "TelePharmacy Team",
+  "license": "MIT"
+}
