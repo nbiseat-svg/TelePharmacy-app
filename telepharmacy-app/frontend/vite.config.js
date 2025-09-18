@@ -4,6 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/telepharmacy-app/', // Corrected to match your actual repository name
   plugins: [
     react(),
     VitePWA({
