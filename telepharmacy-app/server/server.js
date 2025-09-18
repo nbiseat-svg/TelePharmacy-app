@@ -43,6 +43,11 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to TelePharmacy API' });
 });
 
+// Health check route for deployment platforms
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'TelePharmacy API is running' });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
