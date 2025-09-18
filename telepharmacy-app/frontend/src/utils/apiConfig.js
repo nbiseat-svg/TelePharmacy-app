@@ -1,6 +1,6 @@
 // API Configuration
 export const API_BASE_URL = import.meta.env.PROD 
-  ? 'https://your-render-url.onrender.com' // Update this with your actual Render URL
+  ? 'https://telepharmacy-api.vercel.app' // Update this with your actual Vercel API URL
   : 'http://localhost:5000';
 
 export const API_ENDPOINTS = {
