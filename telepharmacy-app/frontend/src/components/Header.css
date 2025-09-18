@@ -342,7 +342,7 @@
     height: 30px;
   }
   
-  .main-nav {
+  .main-nav:not(.mobile-menu) {
     display: none; /* Hide desktop nav on mobile */
   }
   

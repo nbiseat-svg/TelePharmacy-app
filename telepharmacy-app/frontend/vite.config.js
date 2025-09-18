@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/telepharmacy-app/', // Corrected to match your actual repository name
+  base: '/telepharmacy-app/',
   plugins: [
     react(),
     VitePWA({
@@ -70,6 +70,10 @@ export default defineConfig({
         secure: false,
       }
     }
+  },
+  // Add this section for production API URL
+  define: {
+    __API_URL__: JSON.stringify('https://your-render-url.onrender.com'), // Update this after deployment
   },
   // Performance optimizations
   build: {

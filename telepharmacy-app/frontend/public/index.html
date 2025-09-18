@@ -3,270 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TelePharmacy - Working Demo</title>
+    <title>TelePharmacy - Your Online Medicine Store</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f5f7fa;
+            padding: 0;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
+        
+        /* Header Styles */
         header {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 1rem;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #ffd43b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
             text-align: center;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
-        button {
-            background: #667eea;
             color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ffd43b;
+            color: #333;
+            padding: 12px 30px;
             border-radius: 50px;
-            cursor: pointer;
+            text-decoration: none;
             font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
-        .medications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+        
+        .btn:hover {
+            background: #fcc419;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        .medication-card {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid #e9ecef;
+        
+        /* Features Section */
+        .section {
+            padding: 5rem 0;
         }
-        .medication-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #2d3748;
             margin-bottom: 1rem;
         }
-        .loading, .error, .success {
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
+        
+        .section-title p {
+            color: #718096;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
-        .loading {
-            background: #e3f2fd;
-            color: #1976d2;
-        }
-        .error {
-            background: #ffebee;
-            color: #c62828;
-        }
-        .success {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
+        
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
-        .feature {
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
             text-align: center;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
         }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
         .feature-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        /* How It Works */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta .btn {
+            background: white;
+            color: #667eea;
+            font-size: 1.1rem;
+            padding: 15px 40px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ffd43b;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid #4a5568;
+            padding-top: 1rem;
+            color: #a0aec0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>💊 TelePharmacy - Working Demo</h1>
-            <p>Your Health, Our Priority - Serving Ethiopia</p>
-        </header>
-        
-        <div class="card">
-            <h2>🏥 TelePharmacy Services</h2>
-            <p>Access quality pharmaceutical services from the comfort of your home.</p>
-            
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Tele<span>Pharmacy</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Your Health, Our Priority</h1>
+            <p>Get your medications delivered to your doorstep with just a few clicks. Fast, secure, and reliable telepharmacy services.</p>
+            <a href="#" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We provide comprehensive telepharmacy services to meet all your medication needs</p>
+            </div>
             <div class="features">
-                <div class="feature">
+                <div class="feature-card">
                     <div class="feature-icon">💊</div>
                     <h3>Medication Delivery</h3>
-                    <p>Fast delivery to your doorstep</p>
+                    <p>Fast and reliable delivery of prescription and over-the-counter medications right to your doorstep.</p>
                 </div>
-                
-                <div class="feature">
+                <div class="feature-card">
                     <div class="feature-icon">👨‍⚕️</div>
-                    <h3>Expert Pharmacists</h3>
-                    <p>Consult with licensed professionals</p>
+                    <h3>Expert Consultation</h3>
+                    <p>Connect with licensed pharmacists for medication advice and consultation from anywhere.</p>
                 </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">📱</div>
-                    <h3>Easy Ordering</h3>
-                    <p>Simple online prescription management</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Ethiopian Currency</h3>
-                    <p>All prices in ETB (Ethiopian Birr)</p>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Prescription Management</h3>
+                    <p>Upload and manage your prescriptions digitally with our secure platform.</p>
                 </div>
             </div>
         </div>
-        
-        <div class="card">
-            <h2>📋 Available Medications</h2>
-            <p>Browse our catalog of medications with detailed information and images.</p>
-            
-            <button id="loadMedications">Load Medications</button>
-            <div id="medicationsContainer">
-                <div class="loading">Click "Load Medications" to see our catalog</div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h2>📅 Book a Consultation</h2>
-            <p>Schedule a teleconsultation with our expert pharmacists.</p>
-            
-            <button id="bookConsultation">Book Consultation</button>
-            <div id="consultationResult"></div>
-        </div>
-        
-        <div class="card">
-            <h2>🔒 Secure & Private</h2>
-            <p>Your health information is protected with industry-standard security measures.</p>
-            <div id="apiStatus" style="margin-top: 1rem;"></div>
-        </div>
-    </div>
+    </section>
 
-    <script>
-        // Test API connection on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            testApiConnection();
-        });
-        
-        // Test API connection
-        function testApiConnection() {
-            const statusDiv = document.getElementById('apiStatus');
-            statusDiv.innerHTML = '<div class="loading">Testing API connection...</div>';
-            
-            fetch('/api/medications')
-                .then(response => {
-                    if (response.ok) {
-                        statusDiv.innerHTML = '<div class="success">✓ API connection successful - Backend is running!</div>';
-                        return response.json();
-                    } else {
-                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                    }
-                })
-                .catch(error => {
-                    statusDiv.innerHTML = `<div class="error">✗ API connection failed: ${error.message}</div>`;
-                });
-        }
-        
-        // Load medications
-        document.getElementById('loadMedications').addEventListener('click', function() {
-            const container = document.getElementById('medicationsContainer');
-            container.innerHTML = '<div class="loading">Loading medications...</div>';
-            
-            // Use the proxy path /api instead of direct URL
-            fetch('/api/medications')
-                .then(response => response.json())
-                .then(medications => {
-                    displayMedications(medications);
-                })
-                .catch(error => {
-                    container.innerHTML = `<div class="error">Error loading medications: ${error.message}</div>`;
-                });
-        });
-        
-        // Display medications
-        function displayMedications(medications) {
-            const container = document.getElementById('medicationsContainer');
-            
-            if (!medications || medications.length === 0) {
-                container.innerHTML = '<div class="error">No medications found</div>';
-                return;
-            }
-            
-            let html = '<div class="medications-grid">';
-            
-            medications.forEach(med => {
-                // Generate image URL using Unsplash with medication name
-                const imageUrl = `https://source.unsplash.com/300x300/?medicine,${encodeURIComponent(med.name)}`;
-                
-                html += `
-                    <div class="medication-card">
-                        <img src="${imageUrl}" alt="${med.name}" class="medication-image" onerror="this.src='https://source.unsplash.com/300x300/?pill'">
-                        <div style="font-size: 1.3rem; font-weight: 600;">${med.name}</div>
-                        <div style="font-size: 1.2rem; font-weight: 700; color: #667eea;">${med.currency} ${med.price}</div>
-                        <div style="margin: 0.5rem 0;"><strong>Category:</strong> ${med.category || 'General'}</div>
-                        <div><strong>Description:</strong> ${med.description || 'No description available'}</div>
-                        <div><strong>Dosage:</strong> ${med.dosage || 'Not specified'}</div>
-                        ${med.sideEffects ? `<div><strong>Side Effects:</strong> ${med.sideEffects}</div>` : ''}
-                    </div>
-                `;
-            });
-            
-            html += '</div>';
-            container.innerHTML = html;
-        }
-        
-        // Book consultation
-        document.getElementById('bookConsultation').addEventListener('click', function() {
-            const resultDiv = document.getElementById('consultationResult');
-            resultDiv.innerHTML = '<div class="loading">Booking consultation...</div>';
-            
-            const formData = {
-                patientId: '1',
-                pharmacistId: '2',
-                type: 'video',
-                scheduledAt: new Date(Date.now() + 86400000).toISOString(), // Tomorrow
-                duration: 30,
-                notes: 'Test consultation'
-            };
-            
-            // Use the proxy path /api instead of direct URL
-            fetch('/api/consultations', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(consultation => {
-                resultDiv.innerHTML = `
-                    <div class="success">
-                        <h3>Consultation Booked Successfully!</h3>
-                        <p><strong>ID:</strong> ${consultation._id}</p>
-                        <p><strong>Type:</strong> ${consultation.type}</p>
-                        <p><strong>Status:</strong> ${consultation.status}</p>
-                    </div>
-                `;
-            })
-            .catch(error => {
-                resultDiv.innerHTML = `<div class="error">Error booking consultation: ${error.message}</div>`;
-            });
-        });
-    </script>
+    <!-- How It Works -->
+    <section class="section" id="how-it-works" style="background-color: #edf2f7;">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Getting your medications has never been easier</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Upload Prescription</h3>
+                    <p>Upload your prescription or consult with our pharmacists online.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Review & Confirm</h3>
+                    <p>Review your order and confirm payment details.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Get your medications delivered within 24-48 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Join thousands of satisfied customers who trust TelePharmacy for their medication needs.</p>
+            <a href="#" class="btn">Sign Up Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TelePharmacy</h3>
+                    <p>Your trusted partner for remote pharmaceutical services, providing convenient access to medications and expert advice.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: info@telepharmacy.com</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Address: 123 Health St, Medical City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TelePharmacy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
