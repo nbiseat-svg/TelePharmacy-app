@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TelePharmacy - Simple Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+        
+        .medications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .medication-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .medication-card:hover {
+            background: #fff;
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .medication-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .medication-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .medication-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .medication-category {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+        
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #c62828;
+            margin: 1rem 0;
+        }
+        
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #2e7d32;
+            margin: 1rem 0;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .consultation-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+            margin-top: 2rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .medications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .consultation-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💊 TelePharmacy</h1>
+            <p class="subtitle">Your Health, Our Priority - Serving Ethiopia</p>
+        </header>
+        
+        <div class="card">
+            <h2>🏥 TelePharmacy Services</h2>
+            <p>Access quality pharmaceutical services from the comfort of your home.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">💊</div>
+                    <h3>Medication Delivery</h3>
+                    <p>Fast delivery to your doorstep</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3>Expert Pharmacists</h3>
+                    <p>Consult with licensed professionals</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Easy Ordering</h3>
+                    <p>Simple online prescription management</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Ethiopian Currency</h3>
+                    <p>All prices in ETB (Ethiopian Birr)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📋 Available Medications</h2>
+            <p>Browse our catalog of medications with detailed information and images.</p>
+            
+            <div style="text-align: center; margin: 1.5rem 0;">
+                <button id="loadMedications">Load Medications</button>
+            </div>
+            
+            <div id="medicationsContainer">
+                <div class="loading">Click "Load Medications" to see our catalog</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📅 Book a Consultation</h2>
+            <p>Schedule a teleconsultation with our expert pharmacists.</p>
+            
+            <form id="consultationForm">
+                <div class="consultation-form">
+                    <div class="form-group">
+                        <label for="patientId">Patient ID</label>
+                        <input type="text" id="patientId" value="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pharmacistId">Pharmacist ID</label>
+                        <input type="text" id="pharmacistId" value="2" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="type">Consultation Type</label>
+                        <select id="type" required>
+                            <option value="video">Video Call</option>
+                            <option value="audio">Audio Call</option>
+                            <option value="chat">Chat</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="scheduledAt">Date & Time</label>
+                        <input type="datetime-local" id="scheduledAt" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="duration">Duration (minutes)</label>
+                        <input type="number" id="duration" min="15" max="60" value="30" required>
+                    </div>
+                    
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label for="notes">Notes</label>
+                        <textarea id="notes" rows="3" placeholder="Any specific concerns or questions..."></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit">Book Consultation</button>
+            </form>
+            
+            <div id="consultationResult" style="margin-top: 1rem;"></div>
+        </div>
+        
+        <div class="card">
+            <h2>🔒 Secure & Private</h2>
+            <p>Your health information is protected with industry-standard security measures.</p>
+            <div id="apiStatus" style="margin-top: 1rem;"></div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 TelePharmacy. All rights reserved.</p>
+            <p>Providing remote pharmaceutical services across Ethiopia</p>
+        </footer>
+    </div>
+
+    <script>
+        // Test API connection on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            testApiConnection();
+            // Set default date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(10, 0, 0, 0);
+            document.getElementById('scheduledAt').value = tomorrow.toISOString().slice(0, 16);
+        });
+        
+        // Test API connection
+        function testApiConnection() {
+            const statusDiv = document.getElementById('apiStatus');
+            statusDiv.innerHTML = '<div class="loading">Testing API connection...</div>';
+            
+            fetch('/api/medications')
+                .then(response => {
+                    if (response.ok) {
+                        statusDiv.innerHTML = '<div class="success">✓ API connection successful - Backend is running!</div>';
+                        return response.json();
+                    } else {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                })
+                .catch(error => {
+                    statusDiv.innerHTML = `<div class="error">✗ API connection failed: ${error.message}</div>`;
+                });
+        }
+        
+        // Load medications
+        document.getElementById('loadMedications').addEventListener('click', function() {
+            const container = document.getElementById('medicationsContainer');
+            container.innerHTML = '<div class="loading">Loading medications...</div>';
+            
+            fetch('/api/medications')
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                })
+                .then(medications => {
+                    displayMedications(medications);
+                })
+                .catch(error => {
+                    container.innerHTML = `<div class="error">Error loading medications: ${error.message}</div>`;
+                });
+        });
+        
+        // Display medications
+        function displayMedications(medications) {
+            const container = document.getElementById('medicationsContainer');
+            
+            if (!medications || medications.length === 0) {
+                container.innerHTML = '<div class="error">No medications found</div>';
+                return;
+            }
+            
+            let html = '<div class="medications-grid">';
+            
+            medications.forEach(med => {
+                // Generate image URL using Unsplash with medication name
+                const imageUrl = `https://source.unsplash.com/300x300/?medicine,${encodeURIComponent(med.name)}`;
+                
+                html += `
+                    <div class="medication-card">
+                        <img src="${imageUrl}" alt="${med.name}" class="medication-image" onerror="this.src='https://source.unsplash.com/300x300/?pill'">
+                        <div class="medication-name">${med.name}</div>
+                        <div class="medication-price">${med.currency} ${med.price}</div>
+                        <div class="medication-category">${med.category || 'General'}</div>
+                        <p><strong>Description:</strong> ${med.description || 'No description available'}</p>
+                        <p><strong>Dosage:</strong> ${med.dosage || 'Not specified'}</p>
+                        ${med.sideEffects ? `<p><strong>Side Effects:</strong> ${med.sideEffects}</p>` : ''}
+                        <p><strong>Stock:</strong> ${med.stock > 10 ? 'In Stock' : med.stock > 0 ? 'Low Stock' : 'Out of Stock'}</p>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            container.innerHTML = html;
+        }
+        
+        // Handle consultation form submission
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('consultationResult');
+            resultDiv.innerHTML = '<div class="loading">Booking consultation...</div>';
+            
+            const formData = {
+                patientId: document.getElementById('patientId').value,
+                pharmacistId: document.getElementById('pharmacistId').value,
+                type: document.getElementById('type').value,
+                scheduledAt: document.getElementById('scheduledAt').value,
+                duration: parseInt(document.getElementById('duration').value),
+                notes: document.getElementById('notes').value
+            };
+            
+            fetch('/api/consultations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            })
+            .then(consultation => {
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <h3>Consultation Booked Successfully!</h3>
+                        <p><strong>ID:</strong> ${consultation._id}</p>
+                        <p><strong>Type:</strong> ${consultation.type}</p>
+                        <p><strong>Date & Time:</strong> ${new Date(consultation.scheduledAt).toLocaleString()}</p>
+                        <p><strong>Status:</strong> ${consultation.status}</p>
+                    </div>
+                `;
+                // Reset form
+                document.getElementById('consultationForm').reset();
+            })
+            .catch(error => {
+                resultDiv.innerHTML = `<div class="error">Error booking consultation: ${error.message}</div>`;
+            });
+        });
+    </script>
+</body>
+</html>
