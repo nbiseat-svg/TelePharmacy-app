@@ -1,7 +1,8 @@
 // Service to handle order API calls
 import axios from 'axios';
+import { API_BASE_URL } from '../utils/apiConfig';
 
-const API_URL = '/api/orders';
+const API_URL = `${API_BASE_URL}/api/orders`;
 
 // Create axios instance with default config
 const api = axios.create({

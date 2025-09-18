@@ -1,8 +1,9 @@
 // Service to handle medication API calls
 import axios from 'axios';
 import networkOptimizer from '../utils/networkOptimizer';
+import { API_BASE_URL } from '../utils/apiConfig';
 
-const API_URL = '/api/medications';
+const API_URL = `${API_BASE_URL}/api/medications`;
 
 // Create axios instance with default config
 const api = axios.create({
